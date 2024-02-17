@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Pierre.Models;
+
+
+<div class="card-body">
+  <h1>Flavors:</h1>
+  <hr />
+
+
+  @if (@Model.Count == 0)
+  {
+    <h3>There are no flavors yet.</h3>
+  }
+
+  @foreach (Flavor Flavor in Model)
+  {
+    <li>@Html.ActionLink($"{Flavor.FlavorName}", "Details", new { id = Flavor.FlavorId })</li>
+  }
+
+</div>
+<br />
+<button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("Add new Flavor", "Create")</button>
