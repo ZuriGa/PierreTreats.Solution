@@ -36,6 +36,12 @@ namespace Pierre.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult Details(int id)
+    {
+      Flavor selectedFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      return View(selectedFlavor);
+    }
+
 
   }
 }
