@@ -6,6 +6,8 @@ namespace Pierre.Models
   {
     public DbSet<Flavor> Flavors { get; set; }
 
+    public DbSet<Treat> Treats { get; set; }
+
     public PierreContext(DbContextOptions options) : base (options) { }
   }
 }
