@@ -9,8 +9,10 @@ namespace Pierre.Models
   {
     public int TreatId { get; set; }
     [Display(Name = "Treat Name")]
+    [Required(ErrorMessage = "Treat name is required")]
     public string TreatName { get; set; }
-    
+    public string Description { get; set; }
+    public List<FlavorTreat> JoinEntities { get; set; }
   }
 
 }

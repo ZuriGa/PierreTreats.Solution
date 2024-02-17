@@ -38,7 +38,10 @@ namespace Pierre.Controllers
 
     public ActionResult Details(int id)
     {
-      Flavor selectedFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      Flavor selectedFlavor = _db.Flavors
+                                  .Include(flavor => flavor.JoinEntities)
+                                  .ThenInclude(join => join.Treat)
+                                  .FirstOrDefault(flavor => flavor.FlavorId == id);
       return View(selectedFlavor);
     }
 
