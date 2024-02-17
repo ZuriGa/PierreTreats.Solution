@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Pierre.Models.Treat
+
+<h2>Treat Details</h2>
+<hr />
+
+<h3>@Html.DisplayNameFor(model => model.TreatName): @Html.DisplayFor(model => model.TreatName)</h3>
+
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
