@@ -2,4 +2,16 @@
   <div class="fluid-container">
     <h1>@Html.ActionLink("Pierre Treats", "Index", "Home")</h1> 
   </div>
+  <div>
+      @if (User.Identity.IsAuthenticated)
+      {
+        <br />
+        <p>
+          Welcome, <span style= "color: #33dCFF" >@User.Identity.Name</span>!<br />
+          @Html.ActionLink("Manage Account", "Index", "Account")
+        </p>
+      }
+      else
+      {<p>@Html.ActionLink("Log In / Register", "Index", "Account")</p>}
+    </div>
 </div>

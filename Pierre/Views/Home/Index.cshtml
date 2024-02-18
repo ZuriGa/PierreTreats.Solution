@@ -3,6 +3,7 @@
 }
 @using Pierre.Models;
 
+<div class="container" id="full-container">
 <h1>Welcome to Pierre Treats</h1>
 <hr />
 
@@ -15,17 +16,22 @@
     {
       <p>No Flavors have been added yet!</p>
     }
-      @foreach (Flavor flavor in Model["flavors"])
-      {
-        <div class="col">
-          <button class="flavor-button" role="button">@Html.ActionLink(@flavor.FlavorName, "Details", "Flavors", new { id = @flavor.FlavorId })</button>
-        </div>
-      }
+    @foreach (Flavor flavor in Model["flavors"])
+    {
+      <div class="col">
+        <button class="flavor-button" role="button">@Html.ActionLink(@flavor.FlavorName, "Details", "Flavors", new
+            {
+              id =
+        @flavor.FlavorId
+            })</button>
+      </div>
+    }
   </div>
 </div>
 
 <br />
 <div class="container" id="treat-container">
+  <div class="row">
   <h3>Treats </h3>
   @if (Model["treats"].Length == 0)
   {
@@ -36,16 +42,36 @@
     <div class="col-md-4">
       <div class="card" id="treat-card">
         <h5 class="card-header">@treat.TreatName</h5>
-        <p class="card-text">@treat.Description</p> 
-        <button class="btn btn-outline-warning">@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId })</button>
+        <p class="card-text">@treat.Description</p>
+        <button class="btn btn-outline-warning">@Html.ActionLink(@treat.TreatName, "Details", "Treats", new
+            {
+              id =
+        @treat.TreatId
+            })</button>
       </div>
     </div>
   }
 
+  <br />
+  @if (User.Identity.IsAuthenticated)
+  {
+    <button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("View Treats", "Index", "Treats")</button>
+    <br />
+  }
+  else
+  {
+    <button>@Html.ActionLink("View Treats", "LogIn", "Account", new { errorMessage = "Please log in to access this page" })
+    </button>
+
+    <br />
+  }
+  </div>
 </div>
 
 
 
 
-<button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("View Flavors", "Index", "Flavors")</button>
-<button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("View Treats", "Index", "Treats")</button>
+<button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("View Flavors", "Index",
+  "Flavors")</button>
+
+</div>

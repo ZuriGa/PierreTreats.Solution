@@ -38,11 +38,11 @@ namespace Pierre.Controllers
 
     public ActionResult Details(int id)
     {
-      Flavor selectedFlavor = _db.Flavors
+      Flavor thisFlavor = _db.Flavors
                                   .Include(flavor => flavor.JoinEntities)
                                   .ThenInclude(join => join.Treat)
                                   .FirstOrDefault(flavor => flavor.FlavorId == id);
-      return View(selectedFlavor);
+      return View(thisFlavor);
     }
 
     public ActionResult Edit(int id)
