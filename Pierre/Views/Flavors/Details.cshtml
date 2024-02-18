@@ -6,6 +6,7 @@
 @using Pierre.Models;
 @using System.Collections.Generic;
 
+<div class="container" id="flavor-details"> 
 <h2>Flavor Details</h2>
 <hr />
 
@@ -24,7 +25,7 @@ else
   @foreach (FlavorTreat join in Model.JoinEntities)
     {
       <li>@join.Treat.TreatName</li>
-      //add authentication if here <>
+      
       @if (User.Identity.IsAuthenticated)
       {
         @using (Html.BeginForm("DeleteJoin", "Flavors"))
@@ -36,7 +37,7 @@ else
       }
       else
       {
-        <button>@Html.ActionLink("View Treats", "LogIn", "Account", new
+        <button class="btn btn-outline-dark">@Html.ActionLink("View Treats", "LogIn", "Account", new
             {
               errorMessage = "Please log in to access this page"
             })
@@ -49,12 +50,21 @@ else
 }
 
 
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
-
 @if (User.Identity.IsAuthenticated)
-{
-  <p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
-  <p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
-  <p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>
-}
+  {
+    <button class="flavor-button" role="button">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</button>
+    <button class="flavor-button" role="button">@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</button>
+    <button class="flavor-button" role="button">@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</button>
+    <br />
+  }
+  else
+  {
+    <button class="btn btn-outline-dark">@Html.ActionLink("View Treats", "LogIn", "Account", new { errorMessage = "Please log in to access this page" })
+    </button>
+
+    <br />
+  }
+
+  <button class="btn btn-outline-dark">@Html.ActionLink("Back to list", "Index")</button>
+
+</div>

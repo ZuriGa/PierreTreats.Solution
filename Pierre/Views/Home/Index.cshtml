@@ -33,6 +33,7 @@
 <div class="container" id="treat-container">
   <div class="row">
   <h3>Treats </h3>
+  <hr />
   @if (Model["treats"].Length == 0)
   {
     <p>No Treats have been added yet!</p>
@@ -53,6 +54,7 @@
   }
 
   <br />
+  
   @if (User.Identity.IsAuthenticated)
   {
     <button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("View Treats", "Index", "Treats")</button>
@@ -63,15 +65,11 @@
     <button>@Html.ActionLink("View Treats", "LogIn", "Account", new { errorMessage = "Please log in to access this page" })
     </button>
 
-    <br />
-  }
+    
+  } 
+  <br />
   </div>
 </div>
 
-
-
-
-<button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("View Flavors", "Index",
-  "Flavors")</button>
 
 </div>

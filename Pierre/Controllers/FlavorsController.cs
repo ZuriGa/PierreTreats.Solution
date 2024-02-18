@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace Pierre.Controllers
 {
-  [Authorize(Roles = "User")]
+  // [Authorize(Roles = "User")]
   public class FlavorsController : Controller
   {
     private readonly PierreContext _db;
@@ -35,6 +35,7 @@ namespace Pierre.Controllers
       return View(userFlavor);
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       return View();
@@ -70,6 +71,7 @@ namespace Pierre.Controllers
       return View(thisFlavor);
     }
 
+    [Authorize]
     public ActionResult Edit(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
@@ -92,6 +94,7 @@ namespace Pierre.Controllers
 
     }
 
+    [Authorize]
     public ActionResult Delete(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
@@ -107,6 +110,7 @@ namespace Pierre.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     public ActionResult AddTreat(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
@@ -129,6 +133,7 @@ namespace Pierre.Controllers
       return RedirectToAction("Details", new { id = flavor.FlavorId});
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {

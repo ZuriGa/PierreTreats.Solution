@@ -1,13 +1,13 @@
-<div id="header">
-  <div class="fluid-container">
+<div id="header-main">
+  <div class="header-container" id="header">
     <h1>@Html.ActionLink("Pierre Treats", "Index", "Home")</h1> 
   </div>
-  <div>
+  <div id="welcome" style="float: right;" >
       @if (User.Identity.IsAuthenticated)
       {
         <br />
         <p>
-          Welcome, <span style= "color: #33dCFF" >@User.Identity.Name</span>!<br />
+          Welcome, <span style= "color: #A44A3F" >@User.Identity.Name</span>!<br />
           @Html.ActionLink("Manage Account", "Index", "Account")
         </p>
       }

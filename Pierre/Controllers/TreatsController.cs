@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Pierre.Controllers
 {
-  [Authorize(Roles = "User")]
+  // [Authorize(Roles = "User")]
   public class TreatsController : Controller
   {
     private readonly PierreContext _db;
@@ -44,6 +44,7 @@ namespace Pierre.Controllers
       return RedirectToAction("Index");
     }
 
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       Treat thisTreat = _db.Treats
@@ -53,6 +54,7 @@ namespace Pierre.Controllers
       return View(thisTreat);
     }
 
+    [Authorize]  
     public ActionResult Edit(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
@@ -66,13 +68,13 @@ namespace Pierre.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
+    [Authorize]
     public ActionResult Delete(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
-
+  
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
@@ -89,6 +91,7 @@ namespace Pierre.Controllers
       return View(thisTreat);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult AddFlavor(Treat treat, int flavorId)
     {
@@ -103,6 +106,7 @@ namespace Pierre.Controllers
       return RedirectToAction("Details", new { id = treat.TreatId });
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {

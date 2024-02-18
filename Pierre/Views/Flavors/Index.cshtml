@@ -4,11 +4,11 @@
 
 @using Pierre.Models;
 
+<div class="container" id="flavor-container2">
 
-<div class="card-body">
-  <h1>Flavors:</h1>
+  <h1>Flavors</h1>
   <hr />
-
+<ul class="flavor-list">
 
   @if (@Model.Count == 0)
   {
@@ -20,6 +20,8 @@
     <li>@Html.ActionLink($"{Flavor.FlavorName}", "Details", new { id = Flavor.FlavorId })</li>
   }
 
-</div>
+</ul>
 <br />
-<button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("Add new Flavor", "Create")</button>
+<button class="flavor-button" role="button">@Html.ActionLink("Add new Flavor", "Create")</button>
+
+</div>

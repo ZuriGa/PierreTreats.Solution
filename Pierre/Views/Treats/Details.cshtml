@@ -26,6 +26,7 @@ else
     <li>@join.Flavor.FlavorName </li>
     //Add authentication if statement here 
 
+        
         @using (Html.BeginForm("DeleteJoin", "Treats"))
     {
       @Html.Hidden("joinId", @join.FlavorTreatId)
@@ -35,8 +36,17 @@ else
   </ul>
 }
 
+@if (User.Identity.IsAuthenticated)
+  {
+    <p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
+    <p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
+    <p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId })</p>
+    <br />
+  }
+  else
+  {
+    <button>@Html.ActionLink("View Treats", "LogIn", "Account", new { errorMessage = "Please log in to access this page" })
+    </button>
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
-<p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
-<p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId })</p>
+    <br />
+  }
