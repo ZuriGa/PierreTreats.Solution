@@ -24,6 +24,13 @@ else
     @foreach(FlavorTreat join in Model.JoinEntities)
     {
       <li>@join.Treat.TreatName</li>
+      //add authentication if here <>
+
+      @using (Html.BeginForm("DeleteJoin", "Flavors"))
+      {
+        @Html.Hidden("joinId", @join.FlavorTreatId)
+        <input type="submit" value="Delete" />
+      }
     }
   </ul>
 }
