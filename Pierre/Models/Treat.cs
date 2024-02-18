@@ -13,6 +13,7 @@ namespace Pierre.Models
     public string TreatName { get; set; }
     public string Description { get; set; }
     public List<FlavorTreat> JoinEntities { get; set; }
+    public ApplicationUser User { get; set; }
   }
 
 }

@@ -6,18 +6,25 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace Pierre.Controllers
 {
+  [Authorize(Roles = "User")]
   public class TreatsController : Controller
   {
     private readonly PierreContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public TreatsController(PierreContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager,PierreContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<Treat> model = _db.Treats.ToList();

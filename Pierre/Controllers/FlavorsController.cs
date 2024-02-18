@@ -1,26 +1,38 @@
+using Pierre.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using Pierre.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Pierre.Controllers
 {
+  [Authorize(Roles = "User")]
   public class FlavorsController : Controller
   {
     private readonly PierreContext _db;
-    public FlavorsController(PierreContext db)
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public FlavorsController(UserManager<ApplicationUser> userManager, PierreContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
     
-    public ActionResult Index()
+    [AllowAnonymous]
+    public async Task<ActionResult> Index()
     {
-      List<Flavor> model = _db.Flavors.ToList();
-      return View(model);
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Flavor> userFlavor = _db.Flavors
+                      .Where(entry => entry.User.Id == currentUser.Id)
+                      .ToList();
+      return View(userFlavor);
     }
 
     public ActionResult Create()
@@ -29,13 +41,26 @@ namespace Pierre.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Flavor flavor)
+    public async Task<ActionResult> Create(Flavor flavor)
     {
+      if (!ModelState.IsValid)
+      {
+        return View(flavor);
+      }
+      else
+      {
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId); 
+      flavor.User = currentUser;
       _db.Flavors.Add(flavor);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = flavor.FlavorId });
+    
+      }
+
     }
 
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       Flavor thisFlavor = _db.Flavors
@@ -54,9 +79,17 @@ namespace Pierre.Controllers
     [HttpPost]
     public ActionResult Edit(Flavor flavor)
     {
-      _db.Flavors.Update(flavor);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        return View(flavor);
+      }
+      else 
+      {
+        _db.Flavors.Update(flavor);
+        _db.SaveChanges();
+        return RedirectToAction("Details", new { id = flavor.FlavorId });
+      }
+
     }
 
     public ActionResult Delete(int id)

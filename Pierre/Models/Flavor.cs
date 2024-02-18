@@ -12,6 +12,7 @@ namespace Pierre.Models
     [Required(ErrorMessage = "Flavor name is required")]
     public string FlavorName { get; set; }
     public List<FlavorTreat> JoinEntities { get; set; }
+    public ApplicationUser User { get; set; }
 
   }
 }
