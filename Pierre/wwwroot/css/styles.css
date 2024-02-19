@@ -12,6 +12,7 @@
 #h1 {
   font-size: large;
 }
+
 #header-main a{
   font-family: "Protest Riot", sans-serif;
 	font-weight: 800;
@@ -49,6 +50,9 @@
 }
 #welcome{
   margin-right: 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
 
@@ -142,6 +146,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   padding: 15px;
   padding-bottom: 30px;
+  margin-top:15px;
 }
 .flavor-list {
   list-style-type: none;
@@ -168,6 +173,69 @@
   
 }
 
+#flavor-details {
+  background-image: url(../img/background.jpeg);
+  margin-top: 20px;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+#buttonD {
+  background-image: none;
+  margin: 10px;
+}
+#title-details{
+  font-family: "Protest Riot", sans-serif;
+	font-weight: 800;
+	font-style: normal;
+	color: #F6F4D2;
+  font-size: 70px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+
+}
+#title{
+  font-family: "Protest Riot", sans-serif;
+	font-weight: 800;
+	font-style: normal;
+	color: #CBDFBD;
+  font-size: 70px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+#delete-container {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  text-align: center;
+  width: 80%;
+  margin: 40px;
+  border: 1px solid #ccc;
+  transition: transform 0.3s;
+  border-radius: 5px;
+  padding-bottom: 20px;
+}
+#delete-container:hover {
+  transform: scale(1.05); 
+}
+
+.card-header {
+  font-family: "Protest Riot", sans-serif;
+  color: #A44A3F;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+#add-container {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  text-align: center;
+  width: 80%;
+  margin: 40px;
+  border: 1px solid #ccc;
+  transition: transform 0.3s;
+  border-radius: 5px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
 
 #footer {
   position: fixed;
@@ -178,4 +246,5 @@
   text-align: center;
   padding: 10px 0;
 }
+
 

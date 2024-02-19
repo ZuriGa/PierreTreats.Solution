@@ -4,7 +4,9 @@
 
 @model Pierre.Models.Flavor
 
-<h2>Edit</h2>
+<div class="container" id="flavor-container2">
+<h2 id="title">Edit</h2>
+<hr />
 
 <h4>Edit this flavor: @Html.DisplayFor(model => model.FlavorName)</h4>
 
@@ -12,11 +14,13 @@
 {
   @Html.HiddenFor(model => model.FlavorId)
 
-  @Html.LabelFor(model => model.FlavorName)
-  @Html.EditorFor(model => model.FlavorName)
+  @Html.LabelFor(model => model.FlavorName) 
+  @Html.EditorFor(model => model.FlavorName) 
 
 
-  <input type="submit" value="Save" />
+  <input type="submit" value="Save" class="btn btn-outline-dark"/>
 }
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<br />
+<button class="flavor-button" role="button">
+@Html.ActionLink("Back to list", "Index")</button>
+</div>

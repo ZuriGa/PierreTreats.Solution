@@ -4,7 +4,9 @@
 
 @model Pierre.Models.Flavor
 
+<div class="container" id="add-container">
 <h4>Add a new flavor</h4>
+<hr />
 <p>@Html.ValidationMessageFor(model => model.FlavorName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
@@ -12,6 +14,8 @@
   @Html.LabelFor(model => model.FlavorName)
   @Html.TextBoxFor(model => model.FlavorName)
 
-  <input type="submit" value="Add new flavor" />
+  <input type="submit" value="Add new flavor" class="btn btn-outline-dark"/>
 }
-<p>@Html.ActionLink("Show all flavors", "Index")</p>
+<br />
+<button class="flavor-button" role="button">@Html.ActionLink("Show all flavors", "Index")</button>
+</div>
