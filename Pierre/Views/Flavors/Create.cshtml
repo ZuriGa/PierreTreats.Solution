@@ -5,7 +5,7 @@
 @model Pierre.Models.Flavor
 
 <div class="container" id="add-container">
-<h4>Add a new flavor</h4>
+<h4 id="title">Add a new flavor</h4>
 <hr />
 <p>@Html.ValidationMessageFor(model => model.FlavorName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 

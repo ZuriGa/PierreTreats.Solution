@@ -5,7 +5,7 @@
 @model Pierre.Models.Flavor
 
 <div class="container" id="add-container">
-<h2>Add an Treat</h2>
+<h2 id="title">Add a Treat</h2>
 <hr />
 
 <h4>Add a Treat to this Flavor:  @Html.DisplayFor(model => model.FlavorName)</h4>
@@ -14,7 +14,7 @@
 {
   @Html.HiddenFor(model => model.FlavorId)
 
-  @Html.Label("Select an Treat")
+  @Html.Label("Select an Treat :")
   @Html.DropDownList("TreatId")
 
   <input type="submit" value="Save" class="btn btn-light" />

@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Pierre.Controllers
 {
-  // [Authorize(Roles = "User")]
   public class TreatsController : Controller
   {
     private readonly PierreContext _db;

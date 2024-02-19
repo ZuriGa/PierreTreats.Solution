@@ -2,21 +2,26 @@
   Layout = "_Layout";
 }
 
-<div class="container"> 
-<h2>Authentication with Identity</h2>
-<hr />
-@if (User.Identity.IsAuthenticated)
-{
-  <p>Hello @User.Identity.Name!</p>
-  @using (Html.BeginForm("LogOff", "Account"))
-  {
-    <input type="submit" class="btn btn-default" value="Log out" />
-  }
-}
-else
-{
-  <p>@Html.ActionLink("Register", "Register")</p>
-  <p>@Html.ActionLink("Log in", "Login")</p>
-}
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<div class="container">
+  <div class="card" id="account">
+    <h2 id="title2">Manage Account</h2>
+    <hr />
+    @if (User.Identity.IsAuthenticated)
+    {
+      <h4>Hello @User.Identity.Name!</h4>
+      @using (Html.BeginForm("LogOff", "Account"))
+      {
+        <input type="submit" value="Log out" class="btn btn-outline-dark" />
+      }
+    }
+    else
+    {
+      <button class="btn btn-outline-dark">@Html.ActionLink("Register", "Register")</button>
+
+      <br />
+      <button class="btn btn-outline-dark">@Html.ActionLink("Log in", "Login")</button>
+    }
+    <br />
+    <button type="button" class="btn btn-outline-dark">@Html.ActionLink("Home", "Index", "Home")</button>
+  </div>
 </div>

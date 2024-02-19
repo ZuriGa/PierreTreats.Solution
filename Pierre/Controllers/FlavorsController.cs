@@ -12,7 +12,6 @@ using System.Security.Claims;
 
 namespace Pierre.Controllers
 {
-  // [Authorize(Roles = "User")]
   public class FlavorsController : Controller
   {
     private readonly PierreContext _db;
@@ -110,7 +109,6 @@ namespace Pierre.Controllers
       return RedirectToAction("Index");
     }
 
-    [Authorize]
     public ActionResult AddTreat(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
@@ -118,6 +116,7 @@ namespace Pierre.Controllers
       return View(thisFlavor);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult AddTreat(Flavor flavor, int treatId)
     {

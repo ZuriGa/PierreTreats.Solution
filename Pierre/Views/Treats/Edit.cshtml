@@ -4,22 +4,29 @@
 
 @model Pierre.Models.Treat
 
-<h2>Edit</h2>
+<div class="container" id="treat-container1">
+<h2 id="title">Edit</h2>
+<hr />
 
-<h4>Edit this Treat: @Html.DisplayFor(model => model.TreatName)</h4>
+<h4>Edit this Treat: @Html.DisplayFor(model => model.TreatName)</h4><br />
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.TreatId)
-
+  <div class="form-group">
   @Html.LabelFor(model => model.TreatName)
+  :<br />
   @Html.EditorFor(model => model.TreatName)
-
+  </div>
+  <br />
+  <div class="form-group">
   @Html.LabelFor(model => model.Description)
+  :<br />
   @Html.TextAreaFor(model => model.Description)
+  </div>
 
-
-  <input type="submit" value="Save" />
+  <input type="submit" value="Save" class="btn btn-outline-dark"/>
 }
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<br />
+<button class="flavor-button" role="button">@Html.ActionLink("Back to list", "Index")</button>
+</div>

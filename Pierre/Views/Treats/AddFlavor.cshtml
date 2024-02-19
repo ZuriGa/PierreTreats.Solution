@@ -4,8 +4,9 @@
 
 @model Pierre.Models.Treat
 
-<div class="card-body">
-<h2>Add an Flavor</h2>
+<div class="container" id="add-container">
+<h2 id="title">Add a Flavor</h2>
+<hr />
 
 <h4>Add a Flavor to this Treat:  @Html.DisplayFor(model => model.TreatName)</h4>
 
@@ -13,12 +14,14 @@
 {
   @Html.HiddenFor(model => model.TreatId)
 
-  @Html.Label("Select an Flavor")
+  @Html.Label("Select an Flavor: ")
+  
   @Html.DropDownList("FlavorId")
-
-  <input type="submit" value="Save" />
+  <input type="submit" value="Save" class="btn btn-light"/>
 }
+
+
 <br />
+<button class="flavor-button" role="button">@Html.ActionLink("Back to Treat list", "Index", "Treats")</button>
+
 </div>
-<br />
-<button type="button" class="btn btn-outline-warning btn-lg">@Html.ActionLink("Back to Treat list", "Index", "Treats")</button>
