@@ -16,13 +16,13 @@
   <div class="form-group">
   @Html.LabelFor(model => model.TreatName)
   :<br />
-  @Html.EditorFor(model => model.TreatName)
+  @Html.EditorFor(model => model.TreatName, new { @required = "required" })
   </div>
   <br />
   <div class="form-group">
   @Html.LabelFor(model => model.Description)
   :<br />
-  @Html.TextAreaFor(model => model.Description)
+  @Html.TextAreaFor(model => model.Description, new { @required = "required" })
   </div>
 
   <input type="submit" value="Save" class="btn btn-outline-dark"/>

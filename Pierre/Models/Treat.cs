@@ -11,6 +11,7 @@ namespace Pierre.Models
     [Display(Name = "Treat Name")]
     [Required(ErrorMessage = "Treat name is required")]
     public string TreatName { get; set; }
+    [Required(ErrorMessage = "Description is required")]
     public string Description { get; set; }
     public List<FlavorTreat> JoinEntities { get; set; }
     public ApplicationUser User { get; set; }

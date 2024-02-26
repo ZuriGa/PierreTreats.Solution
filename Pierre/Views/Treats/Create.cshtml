@@ -15,13 +15,13 @@
   <div class="form-group">
   @Html.LabelFor(model => model.TreatName)
   :<br />
-  @Html.TextBoxFor(model => model.TreatName)
+  @Html.TextBoxFor(model => model.TreatName, new { @required = "required" })
   </div>
   <br />
   <div class="form-group">
   @Html.LabelFor(model => model.Description)
   :<br />
-  @Html.TextAreaFor(model => model.Description)
+  @Html.TextAreaFor(model => model.Description, new { @required = "required" })
   </div>
   <br />
 
